@@ -1,13 +1,31 @@
-# Iglesias Negocios Inmobiliarios — Boceto de web unificada
+# Iglesias Negocios Inmobiliarios — Web unificada (prototipo)
 
 Propuesta de diseño para unificar en **una sola web** las sucursales de **Tapiales** y **Canning**, en lugar de la portada dividida actual.
 
+<p><img src="docs/preview-mobile.png" width="260" alt="Vista mobile"></p>
+
 ![Vista previa](docs/preview.png)
+
+## Qué funciona
+
+- **Buscador y filtros:** operación (comprar, alquilar, inversiones), zona (Tapiales / Canning), tipo y texto libre. Los links del menú, de los servicios y de las sucursales aplican el filtro que corresponde.
+- **Listado de propiedades** generado desde `js/app.js` (`PROPIEDADES`). Para sumar una propiedad, agregás un objeto a esa lista.
+- **Favoritos** (♡), que se guardan en el navegador.
+- **Galería de fotos** con visor a pantalla completa y navegación con flechas.
+- **Contacto real:** WhatsApp de Canning (11 5954-5500), teléfono y email de Tapiales, y "Cómo llegar" en Google Maps.
+- **Formulario de tasación:** con zona Canning abre WhatsApp con el mensaje armado; con Tapiales abre un email a info@iglesiasprop.com.
+- **Diseño responsive** con menú hamburguesa en celular.
+
+## Publicar con GitHub Pages
+
+Settings → Pages → *Build and deployment* → Source: **Deploy from a branch** → Branch: **main** / **(root)** → Save.
+En 1 o 2 minutos queda en `https://lolosannn.github.io/iglesias-propiedades/`.
 
 ## Cómo verlo
 
 - **`Iglesias-boceto-web.html`**: archivo único con las fotos incluidas. Se abre con doble clic en cualquier navegador y se puede compartir tal cual.
-- **`index.html` + `img/`**: versión de trabajo, con las fotos como archivos separados.
+- **`index.html` + `js/` + `img/`**: el sitio, que es lo que publica GitHub Pages.
+- **`build_standalone.py`**: regenera el archivo único después de cambiar el sitio (`python3 build_standalone.py`).
 - **`docs/preview.png`**: captura de la página completa.
 
 ## Idea principal
@@ -36,4 +54,4 @@ La zona deja de ser una puerta de entrada y pasa a ser un **filtro**: en el busc
 - Dirección de la sucursal Canning y números de matrícula
 - Cifras ("25+ años", "1.500 operaciones") y reseñas: son de ejemplo
 - Logo: está redibujado en SVG; reemplazarlo por el archivo original
-- Versión mobile
+- Envío del formulario a una casilla sin pasar por WhatsApp o email (por ejemplo, con Formspree)

@@ -72,7 +72,7 @@
   .zone-pills{display:flex;gap:6px}
   .zone-pills span{flex:1;text-align:center;border:1.5px solid var(--line);border-radius:10px;padding:12px 8px;font-size:14px;font-weight:600;color:var(--muted)}
   .zone-pills span.on{border-color:var(--navy);color:var(--navy);background:#eef3fa}
-  .search .btn-red{height:49px;padding:0 28px;border-radius:10px}
+  .search .btn-red{height:49px;padding:0 28px;border-radius:10px;justify-content:center}
 
   /* ---------- SECTIONS ---------- */
   section{padding:96px 0}
@@ -226,6 +226,110 @@
   .factors span{font-size:12.5px;color:var(--muted);line-height:1.35;display:block;margin-top:3px}
   .cta p.note{font-size:14.5px;border-left:3px solid var(--navy);padding-left:14px;margin-bottom:26px}
   .nocomp{margin-top:14px;font-size:13.5px;color:#1d8a5b;font-weight:600;text-align:center}
+  /* ---- interactivo ---- */
+  button{font-family:inherit}
+  .tab,.zone-pills button,.chip{cursor:pointer;border:0}
+  .zone-pills button{flex:1;text-align:center;border:1.5px solid var(--line);border-radius:10px;padding:12px 8px;font-size:14px;font-weight:600;color:var(--muted);background:#fff}
+  .zone-pills button.on{border-color:var(--navy);color:var(--navy);background:#eef3fa}
+  .chip{border:1.5px solid var(--line)}
+  select.input,input.input{width:100%;font:inherit;background:#fff;appearance:none;-webkit-appearance:none}
+  select.input{background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%235d6b7e' stroke-width='2'/></svg>") no-repeat right 14px center}
+  .field .input:after{content:none}
+  .fields{grid-template-columns:1.3fr 1fr 1fr 1fr auto}
+  .result-info{color:var(--muted);font-size:14px;margin:-20px 0 18px}
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+  .link{background:none;border:0;color:var(--red);font-weight:700;cursor:pointer;font-size:inherit;text-decoration:underline}
+  .card{cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(8,40,73,.12)}
+  .card.ex .price:after{content:"Ejemplo";margin-left:8px;font-size:10.5px;font-weight:700;vertical-align:middle;background:#fff4d6;color:#8a6100;padding:2px 6px;border-radius:4px}
+  .fav{border:0;cursor:pointer}
+  .fav.on{color:var(--red)}
+  .g-side .more{border:0;cursor:pointer}
+  .gallery>div{cursor:zoom-in}
+  .form input.f,.form select.f,.form textarea.f{width:100%;font:inherit;color:var(--ink);display:block;outline:none}
+  .form .f:focus{border-color:var(--navy)}
+  .form textarea.f{resize:vertical}
+  .form-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+  footer a:hover{color:#fff;text-decoration:underline}
+  .wa{border:0;cursor:pointer}
+  .wa-box{position:fixed;right:26px;bottom:98px;z-index:21;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.2);padding:16px;display:grid;gap:8px;width:280px;font-size:14px}
+  .wa-box a{background:var(--bg);border-radius:10px;padding:11px 12px;font-weight:600;color:var(--navy)}
+  .wa-box a:hover{background:#e6edf6}
+  .lb{position:fixed;inset:0;background:rgba(5,20,38,.92);z-index:50;display:flex;align-items:center;justify-content:center;gap:16px}
+  .lb[hidden],.wa-box[hidden]{display:none}
+  .lb img{max-width:min(90vw,1000px);max-height:82vh;border-radius:10px}
+  .lb-nav,.lb-x{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:28px;cursor:pointer}
+  .lb-x{position:absolute;top:20px;right:20px;font-size:20px}
+  .lb-c{position:absolute;bottom:22px;color:#c9d6e6;font-size:14px}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;padding:8px}
+  .burger span{display:block;height:2px;background:var(--navy);border-radius:2px}
+  html{scroll-behavior:smooth}
+  section[id],footer[id]{scroll-margin-top:80px}
+
+  /* ---- responsive ---- */
+  @media (max-width:1024px){
+    .services{grid-template-columns:repeat(2,1fr)}
+    .grid3,.quotes{grid-template-columns:repeat(2,1fr)}
+    .fields{grid-template-columns:1fr 1fr}
+    .field.wide{grid-column:span 2}
+    .search .btn-red{grid-column:span 2}
+    .feat{grid-template-columns:repeat(3,1fr)}
+    .feat>div:nth-child(4){border-left:0}
+    .feat>div:nth-child(n+4){border-top:1px solid var(--line)}
+    .listing{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+    .factors{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:860px){
+    nav{display:none;position:absolute;top:78px;left:0;right:0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.08)}
+    nav.open{display:flex}
+    nav a{padding:16px 32px;border-top:1px solid var(--line)}
+    .burger{display:flex}
+    .hide-sm{display:none}
+    .topbar .offices span:last-child{display:none}
+    .hero h1{font-size:40px}
+    .hero:after{width:100%;opacity:.35;-webkit-mask-image:none;mask-image:none}
+    .sec-head{flex-direction:column;align-items:flex-start}
+    .sec-head h2{font-size:32px}
+    .zones,.duo,.about,.cta{grid-template-columns:1fr}
+    .about{gap:24px}
+    .srv-grid{grid-template-columns:1fr 1fr}
+    .srv:nth-child(n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .srv:nth-child(2n){border-right:0}
+    .gallery{grid-template-columns:1fr 1fr;height:auto}
+    .gallery .g-main{grid-column:span 2;height:300px}
+    .gallery .g-side{height:180px}
+    .stats .wrap{grid-template-columns:1fr 1fr;gap:30px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 18px}
+    .topbar{display:none}
+    header .wrap{height:68px}
+    nav{top:68px}
+    .hero .wrap{padding-top:50px;padding-bottom:100px}
+    .hero h1{font-size:32px}
+    .hero p.lead{font-size:16px}
+    section{padding:64px 0}
+    .services,.grid3,.quotes,.srv-grid,.fgrid,.fields{grid-template-columns:1fr}
+    .field.wide,.search .btn-red{grid-column:auto}
+    .srv:nth-child(n){border-right:0}
+    .tabs{overflow-x:auto}
+    .tab{white-space:nowrap}
+    .feat{grid-template-columns:repeat(2,1fr)}
+    .feat>div{border-left:0!important;border-top:1px solid var(--line)}
+    .feat>div:nth-child(-n+2){border-top:0}
+    .feat>div:nth-child(odd){border-right:1px solid var(--line)}
+    .zone{padding:28px;min-height:auto}
+    .zone .count{position:static;text-align:left;margin-bottom:16px}
+    .zone .script{font-size:42px}
+    .duo-card{padding:28px}
+    .cta h2,.sec-head h2{font-size:28px}
+    .form .two{grid-template-columns:1fr}
+    .factors{grid-template-columns:1fr 1fr}
+    .legal{flex-direction:column;gap:6px}
+    .wa-box{right:14px;left:14px;width:auto}
+    .wa{right:16px;bottom:16px}
+  }
 </style>
 </head>
 <body>
@@ -256,10 +360,11 @@
       <svg width="34" height="42"><use href="#iso"/></svg>
       <span class="word"><span class="name">Iglesias</span><span class="tag">Negocios Inmobiliarios</span></span>
     </a>
-    <nav>
-      <a href="#">Comprar</a><a href="#">Alquilar</a><a href="#">Inversiones</a><a href="#tasaciones">Tasaciones</a><a href="#nosotros">Nosotros</a><a href="#">Contacto</a>
+    <nav id="nav">
+      <a href="#propiedades" data-op="venta">Comprar</a><a href="#propiedades" data-op="alquiler">Alquilar</a><a href="#propiedades" data-op="inversion">Inversiones</a><a href="#tasaciones">Tasaciones</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
     </nav>
-    <a class="btn btn-red" href="#tasaciones">Tasá tu propiedad</a>
+    <a class="btn btn-red hide-sm" href="#tasaciones">Tasá tu propiedad</a>
+    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -272,18 +377,17 @@
 </section>
 
 <div class="wrap search">
-  <div class="search-card">
-    <div class="tabs"><span class="tab active">Comprar</span><span class="tab">Alquilar</span><span class="tab">Inversiones</span><span class="tab">Emprendimientos</span></div>
+  <form class="search-card" id="searchForm">
+    <div class="tabs" id="opTabs"><button type="button" class="tab active" data-op="venta">Comprar</button><button type="button" class="tab" data-op="alquiler">Alquilar</button><button type="button" class="tab" data-op="inversion">Inversiones</button><button type="button" class="tab" data-op="todas">Ver todo</button></div>
     <div class="fields">
       <div class="field"><label>Zona</label>
-        <div class="zone-pills"><span class="on">Todas</span><span>Tapiales</span><span>Canning</span></div>
+        <div class="zone-pills" id="zonePills"><button type="button" class="on" data-zona="todas">Todas</button><button type="button" data-zona="tapiales">Tapiales</button><button type="button" data-zona="canning">Canning</button></div>
       </div>
-      <div class="field"><label>Tipo</label><div class="input">Casa</div></div>
-      <div class="field"><label>Barrio / Localidad</label><div class="input">Cualquiera</div></div>
-      <div class="field"><label>Precio máx.</label><div class="input">USD 250.000</div></div>
-      <button class="btn btn-red">Buscar</button>
+      <div class="field"><label for="fTipo">Tipo</label><select class="input" id="fTipo"><option value="">Todos</option><option value="casa">Casa</option><option value="departamento">Departamento</option><option value="ph">PH</option><option value="emprendimiento">Emprendimiento</option></select></div>
+      <div class="field wide"><label for="fTexto">Barrio, localidad o palabra clave</label><input class="input" id="fTexto" placeholder="Ej: La Magdalena, pileta, Ciudad Madero…"></div>
+      <button class="btn btn-red" type="submit">Buscar</button>
     </div>
-  </div>
+  </form>
 </div>
 
 <!-- SERVICIOS -->
@@ -294,68 +398,39 @@
       <p>Desde la primera visita hasta la firma de la escritura. Asesoramiento profesional con corredores matriculados.</p>
     </div>
     <div class="services">
-      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0d3a6b"><path d="M12 3 2 11h3v9h14v-9h3z"/><rect x="7" y="13" width="10" height="4" fill="#fff"/></svg></div><h3>Venta</h3><p>Casas, departamentos, lotes y propiedades en barrios cerrados.</p><a href="#">Ver propiedades →</a></div>
-      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0d3a6b" stroke-width="2.2"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M17 17l2-2M15 15l2-2"/></svg></div><h3>Alquiler</h3><p>Alquileres tradicionales y temporarios, con administración completa.</p><a href="#">Ver alquileres →</a></div>
-      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0d3a6b"><rect x="3" y="15" width="4" height="6"/><rect x="10" y="11" width="4" height="10"/><rect x="17" y="7" width="4" height="14"/><path d="M3 11 14 4l-1-2h7v7l-2-1L5 13z"/></svg></div><h3>Inversiones</h3><p>Pozo, emprendimientos y oportunidades con renta en dólares.</p><a href="#">Ver oportunidades →</a></div>
-      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0d3a6b" stroke-width="2.2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Tasaciones</h3><p>Valuación profesional a cargo de los titulares. Sin compromiso.</p><a href="#">Pedir tasación →</a></div>
+      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0d3a6b"><path d="M12 3 2 11h3v9h14v-9h3z"/><rect x="7" y="13" width="10" height="4" fill="#fff"/></svg></div><h3>Venta</h3><p>Casas, departamentos, lotes y propiedades en barrios cerrados.</p><a href="#propiedades" data-op="venta">Ver propiedades →</a></div>
+      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0d3a6b" stroke-width="2.2"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M17 17l2-2M15 15l2-2"/></svg></div><h3>Alquiler</h3><p>Alquileres tradicionales y temporarios, con administración completa.</p><a href="#propiedades" data-op="alquiler">Ver alquileres →</a></div>
+      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0d3a6b"><rect x="3" y="15" width="4" height="6"/><rect x="10" y="11" width="4" height="10"/><rect x="17" y="7" width="4" height="14"/><path d="M3 11 14 4l-1-2h7v7l-2-1L5 13z"/></svg></div><h3>Inversiones</h3><p>Pozo, emprendimientos y oportunidades con renta en dólares.</p><a href="#propiedades" data-op="inversion">Ver oportunidades →</a></div>
+      <div class="svc"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0d3a6b" stroke-width="2.2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Tasaciones</h3><p>Valuación profesional a cargo de los titulares. Sin compromiso.</p><a href="#tasaciones">Pedir tasación →</a></div>
     </div>
   </div>
 </section>
 
 <!-- DESTACADAS -->
-<section class="bg-soft">
+<section class="bg-soft" id="propiedades">
   <div class="wrap">
     <div class="sec-head">
       <div><div class="kicker">Destacadas</div><h2 class="serif">Propiedades seleccionadas</h2></div>
-      <div class="filters"><span class="chip on">Todas</span><span class="chip">Tapiales</span><span class="chip">Canning</span></div>
+      <div class="filters" id="zoneChips"><button class="chip on" data-zona="todas">Todas</button><button class="chip" data-zona="tapiales">Tapiales</button><button class="chip" data-zona="canning">Canning</button></div>
     </div>
-    <div class="grid3">
-      <!-- 1 -->
-      <div class="card"><div class="ph" style="background:url(img/magdalena-frente.jpg) center/cover">
-        <div class="badges"><span class="badge op">Venta</span><span class="badge loc">Canning</span></div><span class="fav">♡</span><span class="pcount">📷 1/3</span></div>
-        <div class="body"><div class="price">Consultar precio</div><h4>Casa a estrenar en La Magdalena</h4><div class="addr">Barrio La Magdalena · Canning</div>
-        <div class="specs"><span><b>3</b> dorm.</span><span><b>3</b> baños</span><span><b>750</b> m² lote</span><span>Pileta</span></div></div></div>
-      <!-- 2 -->
-      <div class="card"><div class="ph" style="background:url(img/tapiales-galeria.jpg) center 55%/cover">
-        <div class="badges"><span class="badge op">Venta</span><span class="badge loc">Tapiales</span></div><span class="fav">♡</span><span class="pcount">📷 1/3</span></div>
-        <div class="body"><div class="price">Consultar precio</div><h4>Casa en 2 plantas con galería vidriada</h4><div class="addr">Ciudad Madero · La Matanza</div>
-        <div class="specs"><span><b>2</b> plantas</span><span>Hogar</span><span>Quincho</span><span>Patio</span></div></div></div>
-      <!-- 3 -->
-      <div class="card"><div class="ph d"><svg class="house" width="90" height="80" viewBox="0 0 90 80"><rect x="10" y="0" width="70" height="80" fill="#f6f3ee"/><g fill="#8fb2cc"><rect x="20" y="10" width="20" height="14"/><rect x="50" y="10" width="20" height="14"/><rect x="20" y="32" width="20" height="14"/><rect x="50" y="32" width="20" height="14"/><rect x="20" y="54" width="20" height="14"/><rect x="50" y="54" width="20" height="14"/></g></svg>
-        <div class="badges"><span class="badge op" style="background:#0d3a6b">Alquiler</span><span class="badge loc">Tapiales</span></div><span class="fav">♡</span></div>
-        <div class="body"><div class="price">$ 480.000 <small>/ mes</small></div><h4>Departamento 2 amb. con balcón</h4><div class="addr">Tapiales, La Matanza</div>
-        <div class="specs"><span><b>2</b> amb.</span><span><b>1</b> baño</span><span><b>48</b> m² cub.</span><span>Apto mascotas</span></div></div></div>
-      <!-- 4 -->
-      <div class="card"><div class="ph e"><svg class="house" width="130" height="60" viewBox="0 0 130 60"><rect x="0" y="15" width="130" height="45" fill="#f6f3ee"/><rect x="15" y="25" width="45" height="25" fill="#8fb2cc"/><rect x="75" y="25" width="40" height="25" fill="#8fb2cc"/></svg>
-        <div class="badges"><span class="badge op" style="background:#0d3a6b">Alquiler</span><span class="badge loc">Canning</span></div><span class="fav">♡</span></div>
-        <div class="body"><div class="price">USD 1.400 <small>/ mes</small></div><h4>Casa en country con pileta</h4><div class="addr">Country · Canning, San Vicente</div>
-        <div class="specs"><span><b>5</b> amb.</span><span><b>3</b> baños</span><span><b>240</b> m² cub.</span><span>Pileta</span></div></div></div>
-      <!-- 5 -->
-      <div class="card"><div class="ph a"><svg class="house" width="100" height="80" viewBox="0 0 100 80"><rect x="5" y="0" width="90" height="80" fill="#e9eef3" stroke="#c1ccd6" stroke-dasharray="4 3"/><g fill="#b4c7d6"><rect x="15" y="10" width="70" height="10"/><rect x="15" y="30" width="70" height="10"/><rect x="15" y="50" width="70" height="10"/></g></svg>
-        <div class="badges"><span class="badge op" style="background:#1d8a5b">Inversión</span><span class="badge loc">Canning</span></div><span class="fav">♡</span></div>
-        <div class="body"><div class="price">Desde USD 85.000</div><h4>Emprendimiento en pozo — monoambientes y 2 amb.</h4><div class="addr">Canning · Entrega 2028</div>
-        <div class="specs"><span>Financiación <b>36</b> cuotas</span><span>Amenities</span></div></div></div>
-      <!-- 6 -->
-      <div class="card"><div class="ph f"><svg class="house" width="120" height="60" viewBox="0 0 120 60"><path d="M0 25 30 5l30 20v35H0z" fill="#f6f3ee"/><path d="M60 25 90 5l30 20v35H60z" fill="#efe9e0"/><rect x="10" y="32" width="18" height="16" fill="#8fb2cc"/><rect x="70" y="32" width="18" height="16" fill="#8fb2cc"/></svg>
-        <div class="badges"><span class="badge op">Venta</span><span class="badge loc">Tapiales</span></div><span class="fav">♡</span></div>
-        <div class="body"><div class="price">USD 98.000</div><h4>PH al frente, sin expensas</h4><div class="addr">Tapiales, La Matanza</div>
-        <div class="specs"><span><b>3</b> amb.</span><span><b>1</b> baño</span><span><b>75</b> m² cub.</span><span>Patio</span></div></div></div>
-    </div>
-    <div class="center"><a class="btn btn-ghost" href="#">Ver las +300 propiedades</a></div>
+    <p class="result-info" id="resultInfo"></p>
+    <div class="grid3" id="grid"></div>
+    <div class="empty" id="empty" hidden>No encontramos propiedades con esos filtros. <button class="link" id="resetBtn">Ver todas</button> o <a class="link" href="#tasaciones">dejanos tu búsqueda</a>.</div>
+    <div class="center"><button class="btn btn-ghost" id="allBtn">Ver todas las propiedades</button></div>
   </div>
 </section>
 
 <!-- FICHA DE MUESTRA -->
-<section>
+<section id="ficha-canning">
   <div class="wrap">
     <div class="sec-head">
       <div><div class="kicker">Propiedad del mes · Canning</div><h2 class="serif">Casa a estrenar en Barrio La Magdalena</h2></div>
       <div class="filters"><span class="chip on" style="background:var(--red);border-color:var(--red)">Venta</span><span class="chip">A estrenar</span></div>
     </div>
-    <div class="gallery">
+    <div class="gallery" data-gal-host>
       <div class="g-main" style="background-image:url(img/magdalena-frente.jpg)"><span class="badge loc" style="position:absolute;left:18px;top:18px">📍 La Magdalena, Canning</span></div>
       <div class="g-side" style="background-image:url(img/magdalena-living.jpg)"></div>
-      <div class="g-side" style="background-image:url(img/magdalena-bano.jpg)"><span class="more">Ver las 15 fotos</span></div>
+      <div class="g-side" style="background-image:url(img/magdalena-bano.jpg)"><button class="more" data-gal="magdalena">Ver fotos</button></div>
     </div>
     <div class="listing">
       <div>
@@ -372,8 +447,8 @@
       <aside class="contact">
         <div class="price">Consultar precio</div>
         <div style="color:var(--muted);font-size:14px;margin:2px 0 18px">Ref. CAN-0001 · Sucursal Canning</div>
-        <a class="btn btn-wa" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg> Consultar por WhatsApp</a>
-        <a class="btn btn-ghost" href="#" style="width:100%;justify-content:center;margin-top:10px">Agendar visita</a>
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/5491159545500?text=Hola%2C%20quiero%20consultar%20por%20la%20casa%20a%20estrenar%20en%20Barrio%20La%20Magdalena%20(Ref.%20CAN-0001)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg> Consultar por WhatsApp</a>
+        <a class="btn btn-ghost" href="https://wa.me/5491159545500?text=Hola%2C%20quiero%20agendar%20una%20visita%20a%20la%20casa%20de%20La%20Magdalena%20(Ref.%20CAN-0001)" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:10px">Agendar visita</a>
         <div class="agent"><div class="av">IC</div><div><b>Iglesias Canning</b><span>11 5954-5500 · canning@iglesiasprop.com</span></div></div>
       </aside>
     </div>
@@ -381,16 +456,16 @@
 </section>
 
 <!-- FICHA DE MUESTRA TAPIALES -->
-<section class="bg-soft">
+<section class="bg-soft" id="ficha-tapiales">
   <div class="wrap">
     <div class="sec-head">
       <div><div class="kicker">Propiedad del mes · Tapiales</div><h2 class="serif">Casa en 2 plantas en Ciudad Madero</h2></div>
       <div class="filters"><span class="chip on" style="background:var(--red);border-color:var(--red)">Venta</span><span class="chip">Destacada</span></div>
     </div>
-    <div class="gallery">
+    <div class="gallery" data-gal-host>
       <div class="g-main" style="background-image:url(img/tapiales-galeria.jpg);background-position:center 60%"><span class="badge loc" style="position:absolute;left:18px;top:18px">📍 Mariquita Thompson 1013, Ciudad Madero</span></div>
-      <div class="g-side" style="background-image:url(img/tapiales-living.jpg);background-color:#dfe6ee"><span class="slot">Foto: living</span></div>
-      <div class="g-side" style="background-image:url(img/tapiales-frente.jpg);background-position:center 55%"><span class="more">Ver todas las fotos</span></div>
+      <div class="g-side" style="background-color:#dfe6ee"><span class="slot">Foto: living</span></div>
+      <div class="g-side" style="background-image:url(img/tapiales-frente.jpg);background-position:center 55%"><button class="more" data-gal="madero">Ver fotos</button></div>
     </div>
     <div class="listing">
       <div>
@@ -407,8 +482,8 @@
       <aside class="contact" style="background:#fff">
         <div class="price">Consultar precio</div>
         <div style="color:var(--muted);font-size:14px;margin:2px 0 18px">Ref. TAP-0001 · Sucursal Tapiales</div>
-        <a class="btn btn-wa" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg> Consultar por WhatsApp</a>
-        <a class="btn btn-ghost" href="#" style="width:100%;justify-content:center;margin-top:10px">Agendar visita</a>
+        <a class="btn btn-navy" style="width:100%;justify-content:center" href="tel:+541144420214">📞 Llamar a la sucursal</a>
+        <a class="btn btn-ghost" href="mailto:info@iglesiasprop.com?subject=Visita%20Ref.%20TAP-0001%20-%20Ciudad%20Madero" style="width:100%;justify-content:center;margin-top:10px">Agendar visita</a>
         <div class="agent"><div class="av">IT</div><div><b>Iglesias Tapiales</b><span>4442-0214 · Tuyutí 1375</span></div></div>
       </aside>
     </div>
@@ -428,14 +503,14 @@
         <div class="script">Tapiales</div>
         <p>Casas, PH y departamentos en Tapiales, Ramos Mejía, Lomas del Mirador y alrededores. Ideal para primera vivienda y alquiler.</p>
         <ul><li>Casas con patio</li><li>PH</li><li>Departamentos</li><li>Locales</li></ul>
-        <div class="row"><a class="btn btn-red" href="#">Ver propiedades en Tapiales</a><a class="btn btn-ghost" href="#">Cómo llegar</a></div>
+        <div class="row"><a class="btn btn-red" href="#propiedades" data-zona="tapiales">Ver propiedades en Tapiales</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tuyut%C3%AD+1375%2C+Tapiales%2C+Buenos+Aires">Cómo llegar</a></div>
       </div>
       <div class="zone can">
         <div class="count"><b>140+</b><span>propiedades activas</span></div>
         <div class="script">Canning</div>
         <p>Barrios cerrados, countries, lotes y emprendimientos en Canning, Ezeiza y San Vicente. Vida verde a 40 min de CABA.</p>
         <ul><li>Barrios cerrados</li><li>Lotes</li><li>Countries</li><li>Pozo / inversión</li></ul>
-        <div class="row"><a class="btn btn-red" href="#">Ver propiedades en Canning</a><a class="btn btn-ghost" href="#">Cómo llegar</a></div>
+        <div class="row"><a class="btn btn-red" href="#propiedades" data-zona="canning">Ver propiedades en Canning</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Iglesias+Negocios+Inmobiliarios+Canning">Cómo llegar</a></div>
       </div>
     </div>
   </div>
@@ -474,13 +549,13 @@
         <h3 class="serif">Renta asegurada en el corto plazo</h3>
         <p>Asesoramos a quienes buscan incorporarse al sector inmobiliario con la compra de departamentos, cocheras, locales comerciales y más.</p>
         <div class="tags"><span>Departamentos</span><span>Cocheras</span><span>Locales comerciales</span><span>Pozo</span></div>
-        <a class="btn btn-red" href="#">Quiero invertir</a>
+        <a class="btn btn-red" target="_blank" rel="noopener" href="https://wa.me/5491159545500?text=Hola%2C%20quiero%20asesoramiento%20para%20invertir">Quiero invertir</a>
       </div>
       <div class="duo-card devs">
         <div class="kicker">Para desarrolladores y arquitectos</div>
         <h3 class="serif" style="color:var(--navy)">Te acompañamos desde el terreno hasta la venta</h3>
         <ul class="checks"><li>Búsqueda y valuación del terreno</li><li>Negociación con propietarios (hacerlos parte del negocio)</li><li>Valores de venta y financiación recomendados</li><li>Diseño de cartelería y folletos del proyecto</li><li>Publicaciones gráficas</li><li>Espacio exclusivo en la sección Emprendimientos de la web</li></ul>
-        <a class="btn btn-navy" href="#">Presentanos tu proyecto</a>
+        <a class="btn btn-navy" href="mailto:info@iglesiasprop.com?subject=Proyecto%20para%20presentar">Presentanos tu proyecto</a>
       </div>
     </div>
   </div>
@@ -506,17 +581,22 @@
         <div class="step"><b>3</b><div><strong>Entrevista y tasación profesional</strong><br><span style="color:var(--muted)">Con una visión real y actualizada del mercado.</span></div></div>
       </div>
     </div>
-    <div class="form" style="background:#fff">
+    <form class="form" id="tasForm" style="background:#fff">
       <h3>Solicitá la tasación de tu inmueble</h3>
-      <div class="two"><div class="f">Nombre y apellido</div><div class="f">Teléfono</div></div>
-      <div class="f">Email</div>
-      <div class="f">Dirección del inmueble</div>
-      <div class="two"><div class="f">Tipo de inmueble ▾</div><div class="f">Zona: Tapiales / Canning ▾</div></div>
-      <div class="two"><div class="f">Superficie aprox. (m²)</div><div class="f">Motivo: venta / alquiler ▾</div></div>
-      <div class="f" style="height:70px">Comentarios (opcional)</div>
-      <a class="btn btn-red" href="#">Solicitar tasación</a>
+      <div class="two"><input class="f" name="nombre" placeholder="Nombre y apellido" required><input class="f" name="tel" type="tel" placeholder="Teléfono" required></div>
+      <input class="f" name="email" type="email" placeholder="Email">
+      <input class="f" name="dir" placeholder="Dirección del inmueble" required>
+      <div class="two">
+        <select class="f" name="tipo" required><option value="">Tipo de inmueble</option><option>Casa</option><option>Departamento</option><option>PH</option><option>Terreno / lote</option><option>Local / oficina</option><option>Otro</option></select>
+        <select class="f" name="zona" required><option value="">Zona</option><option value="Tapiales">Tapiales y alrededores</option><option value="Canning">Canning y alrededores</option></select>
+      </div>
+      <div class="two"><input class="f" name="sup" type="number" min="0" placeholder="Superficie aprox. (m²)">
+        <select class="f" name="motivo"><option value="Venta">Motivo: venta</option><option value="Alquiler">Motivo: alquiler</option><option value="Otro">Otro</option></select></div>
+      <textarea class="f" name="msg" rows="3" placeholder="Comentarios (opcional)"></textarea>
+      <button class="btn btn-red" type="submit">Solicitar tasación</button>
       <div class="nocomp">✓ La tasación no implica ningún compromiso de tu parte.</div>
-    </div>
+      <div class="form-hint">Canning: se abre WhatsApp con tu consulta lista. Tapiales: se abre tu email.</div>
+    </form>
   </div>
 </section>
 
@@ -532,7 +612,7 @@
   </div>
 </section>
 
-<footer>
+<footer id="contacto">
   <div class="wrap">
     <div class="fgrid">
       <div>
@@ -540,15 +620,24 @@
         <p style="margin-top:18px;max-width:280px">Venta, alquiler e inversiones en Tapiales y Canning.</p>
         <p style="margin-top:14px;color:#fff;font-weight:600">iglesiasprop.com</p>
       </div>
-      <div><h5>Sucursal Tapiales</h5><ul><li>Tuyutí 1375, Tapiales</li><li>4442-0214</li><li>info@iglesiasprop.com</li><li>Lu a Vie 10 a 17 h · Sáb 10 a 13 h</li><li>Mat. N° 0000 (completar)</li></ul></div>
-      <div><h5>Sucursal Canning</h5><ul><li>Canning (dirección a completar)</li><li>11 4494-4370 · WA 11 5954-5500</li><li>canning@iglesiasprop.com</li><li>Lu a Vie 10 a 17 h · Sáb 10 a 13 h</li><li>Mat. N° 0000 (completar)</li></ul></div>
-      <div><h5>Navegación</h5><ul><li>Comprar</li><li>Alquilar</li><li>Inversiones</li><li>Tasaciones</li><li>Nosotros</li></ul></div>
+      <div><h5>Sucursal Tapiales</h5><ul><li>Tuyutí 1375, Tapiales</li><li><a href="tel:+541144420214">4442-0214</a></li><li><a href="mailto:info@iglesiasprop.com">info@iglesiasprop.com</a></li><li>Lu a Vie 10 a 17 h · Sáb 10 a 13 h</li><li>Mat. N° 0000 (completar)</li></ul></div>
+      <div><h5>Sucursal Canning</h5><ul><li>Canning (dirección a completar)</li><li><a href="tel:+541144944370">11 4494-4370</a> · <a target="_blank" rel="noopener" href="https://wa.me/5491159545500">WhatsApp 11 5954-5500</a></li><li><a href="mailto:canning@iglesiasprop.com">canning@iglesiasprop.com</a></li><li>Lu a Vie 10 a 17 h · Sáb 10 a 13 h</li><li>Mat. N° 0000 (completar)</li></ul></div>
+      <div><h5>Navegación</h5><ul><li><a href="#propiedades" data-op="venta">Comprar</a></li><li><a href="#propiedades" data-op="alquiler">Alquilar</a></li><li><a href="#propiedades" data-op="inversion">Inversiones</a></li><li><a href="#tasaciones">Tasaciones</a></li><li><a href="#nosotros">Nosotros</a></li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 Iglesias Negocios Inmobiliarios · Boceto de diseño</span><span>Precios, cifras, reseñas y matrículas son de ejemplo</span></div>
+    <div class="legal"><span>© 2026 Iglesias Negocios Inmobiliarios · Prototipo</span><span>Precios, cifras, reseñas y matrículas son de ejemplo</span></div>
   </div>
 </footer>
 
-<a class="wa" href="#" title="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
+<div class="wa-box" id="waBox" hidden>
+  <b>¿Con qué sucursal querés hablar?</b>
+  <a target="_blank" rel="noopener" href="https://wa.me/5491159545500?text=Hola%2C%20quiero%20hacer%20una%20consulta">Canning · WhatsApp 11 5954-5500</a>
+  <a href="tel:+541144420214">Tapiales · Llamar 4442-0214</a>
+</div>
+<button class="wa" id="waBtn" aria-label="Contacto por WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></button>
+
+<div class="lb" id="lb" hidden><button class="lb-x" id="lbX" aria-label="Cerrar">✕</button><button class="lb-nav" id="lbPrev" aria-label="Anterior">‹</button><img id="lbImg" alt=""><button class="lb-nav" id="lbNext" aria-label="Siguiente">›</button><div class="lb-c" id="lbC"></div></div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
