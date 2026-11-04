@@ -206,10 +206,6 @@ $('#tasForm').addEventListener('submit', (e) => {
   else location.href = `mailto:${MAIL_TAPIALES}?subject=${encodeURIComponent('Solicitud de tasación')}&body=${encodeURIComponent(txt)}`;
 });
 
-// --- WhatsApp flotante
-$('#waBtn').addEventListener('click', (e) => { e.stopPropagation(); $('#waBox').hidden = !$('#waBox').hidden; });
-document.addEventListener('click', (e) => { if (!e.target.closest('#waBox')) $('#waBox').hidden = true; });
-
 // --- menú mobile
 const closeNav = () => $('#nav').classList.remove('open');
 $('#burger').addEventListener('click', () => $('#nav').classList.toggle('open'));
