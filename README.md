@@ -6,6 +6,12 @@ Propuesta de diseño para unificar en **una sola web** las sucursales de **Tapia
 
 ![Vista previa](docs/preview.png)
 
+## Hero animado
+
+![Animación del hero](docs/hero-animacion.gif)
+
+La foto carga como una imagen normal; después el recuadro se recorta desde arriba y el techo de la casa queda "afuera" del marco, tapando parte de "IGLESIAS". Son dos capas de la misma imagen: `img/hero-casa.jpg` (foto completa, recortada por el marco) y `img/hero-casa-techo.png` (solo la casa, sin cielo). Respeta la opción "reducir movimiento" del sistema.
+
 ## Qué funciona
 
 - **Buscador y filtros:** operación (comprar, alquilar, inversiones), zona (Tapiales / Canning), tipo y texto libre. Los links del menú, de los servicios y de las sucursales aplican el filtro que corresponde.
