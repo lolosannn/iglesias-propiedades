@@ -469,7 +469,6 @@
 
   /* cifras */
   .stats{position:relative;overflow:hidden;background:var(--red)}
-  .stats:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.06) 0 2px,transparent 2px 18px)}
   .stats .wrap{position:relative}
   .stats b{font-family:var(--display);font-size:68px;line-height:1;font-weight:400}
   .stats b i{color:#fff;opacity:.6}
@@ -511,6 +510,63 @@
   @media (prefers-reduced-motion:reduce){
     .rv{opacity:1!important;transform:none!important;transition:none}
     .mq-track{animation:none}
+  }
+  /* ===== CÓMO TRABAJAMOS: scroll fijo paso a paso ===== */
+  .how-scroll{position:relative;height:calc(var(--n) * 70vh + 60vh);margin:72px 0 40px}
+  .hs-sticky{position:sticky;top:96px;height:calc(100vh - 140px);min-height:460px;display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center;
+    background:var(--navy);color:#fff;border-radius:28px;padding:48px 56px;overflow:hidden;box-shadow:0 30px 70px rgba(8,40,73,.25)}
+  .hs-left{position:relative}
+  .hs-left .kicker{color:#ff8f95}
+  .hs-left .kicker:before{width:28px}
+  .hs-title{font-family:var(--display);font-weight:400;font-size:38px;line-height:1.05;letter-spacing:-.02em;margin:10px 0 28px}
+  .hs-nav{list-style:none;display:grid;gap:4px}
+  .hs-nav li{display:flex;gap:14px;align-items:center;padding:10px 0;font-weight:600;color:rgba(255,255,255,.4);transition:color .4s,transform .4s;cursor:pointer}
+  .hs-nav li span{font-family:var(--display);font-size:13px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.25);transition:all .4s}
+  .hs-nav li.done{color:rgba(255,255,255,.75)}
+  .hs-nav li.done span{background:rgba(255,255,255,.12);border-color:transparent}
+  .hs-nav li.on{color:#fff;transform:translateX(8px)}
+  .hs-nav li.on span{background:var(--red);border-color:var(--red);box-shadow:0 0 0 6px rgba(225,37,47,.25)}
+  .hs-bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:22px;overflow:hidden}
+  .hs-bar i{display:block;height:100%;width:0;background:var(--red);border-radius:4px;transition:width .15s linear}
+  .hs-hint{margin-top:14px;font-size:13px;color:rgba(255,255,255,.5);transition:opacity .4s}
+  .how-scroll.end .hs-hint{opacity:0}
+  .hs-right{position:relative;height:100%;min-height:360px}
+  .hs-panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(70px);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  .hs-panel.prev{opacity:0;transform:translateY(-70px)}
+  .hs-panel.on{opacity:1;transform:none;pointer-events:auto}
+  .hs-num{font-family:var(--display);font-size:clamp(120px,15vw,230px);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.35);position:relative}
+  .hs-panel.on .hs-num{animation:hsNum .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes hsNum{from{-webkit-text-stroke-color:rgba(255,255,255,0);letter-spacing:.1em}to{}}
+  .hs-body{position:relative;margin-top:-34px;padding-left:6px}
+  .hs-ico{width:62px;height:62px;border-radius:16px;background:var(--red);display:grid;place-items:center;margin-bottom:18px;box-shadow:0 14px 30px rgba(225,37,47,.35)}
+  .hs-ico svg{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .hs-panel h4{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.05;letter-spacing:-.02em;margin-bottom:12px}
+  .hs-panel p{font-size:18px;line-height:1.55;color:#c9d6e6;max-width:480px}
+  @media (max-width:860px){
+    .how-scroll{height:calc(var(--n) * 80vh + 60vh)}
+    .hs-sticky{grid-template-columns:1fr;gap:10px;padding:28px 24px;top:84px;height:calc(100svh - 110px);align-content:start}
+    .hs-title{font-size:26px;margin-bottom:14px}
+    .hs-nav{display:flex;gap:8px}
+    .hs-nav li{padding:0;font-size:0;gap:0}
+    .hs-nav li.on{transform:none}
+    .hs-bar{margin-top:14px}
+    .hs-hint{display:none}
+    .hs-title{font-size:22px}
+    .hs-nav li span{width:30px;height:30px;font-size:11px}
+    .hs-panel{justify-content:flex-start;padding-top:8px}
+    .hs-num{font-size:84px}
+    .hs-body{margin-top:-22px}
+    .hs-ico{width:48px;height:48px;border-radius:12px;margin-bottom:12px}
+    .hs-ico svg{width:24px;height:24px}
+    .hs-panel h4{font-size:24px;margin-bottom:8px}
+    .hs-panel p{font-size:15px;line-height:1.5}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .how-scroll{height:auto}
+    .hs-sticky{position:relative;top:0;height:auto;grid-template-columns:1fr}
+    .hs-right{height:auto}
+    .hs-panel{position:relative;opacity:1;transform:none;margin-bottom:30px}
+    .hs-hint,.hs-bar{display:none}
   }
 </style>
 </head>
@@ -739,8 +795,18 @@
     <div class="sub-head"><div class="kicker">Para propietarios</div><h3 class="serif">¿Querés vender o alquilar? Tenemos las mejores herramientas para encontrar al comprador o inquilino indicado.</h3></div>
     <div class="srv-grid"><div class="srv"><svg viewBox="0 0 24 24"><path d="M4 20V6l8-3 8 3v14M9 20v-5h6v5M8 9h.01M12 9h.01M16 9h.01"/></svg><h4>Tasaciones</h4><p>Valuaciones profesionales, con una visión real y actualizada de las tendencias del mercado.</p></div><div class="srv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 7l4 3M18 7l-4 3M6 17l4-3M18 17l-4-3"/></svg><h4>Oferta directa y múltiple</h4><p>Ofrecemos tu inmueble en nuestra oficina y lo multiplicamos a través de colegas de prestigio de la zona de tu propiedad.</p></div><div class="srv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><h4>Internet y portales</h4><p>Sitio propio bien posicionado en buscadores, con ficha detallada, fotos y ubicación en Google Maps, más publicación en los principales portales.</p></div><div class="srv"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h7"/></svg><h4>Contratos</h4><p>Redacción, análisis y revisión de contratos. Informes y antecedentes de locatarios y fiadores.</p></div><div class="srv"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><h4>Administración</h4><p>Gestión de alquileres nuevos o preexistentes, cobranzas, mantenimiento y reparaciones.</p></div><div class="srv"><svg viewBox="0 0 24 24"><path d="M4 21V9h5v12M10 21V4h5v17M16 21v-8h4v8"/></svg><h4>Emprendimientos</h4><p>Factibilidad de proyectos y contacto con empresas constructoras.</p></div></div>
 
-    <div class="sub-head"><div class="kicker">¿Cómo trabajamos?</div><h3 class="serif">Así llevamos tu propiedad a más gente</h3></div>
-    <div class="how"><div class="how-i"><span class="how-n">01</span><h4>Atención personalizada</h4><p>Combinamos atención personalizada con estrategias de comercialización de alto alcance.</p></div><div class="how-i"><span class="how-n">02</span><h4>Portales inmobiliarios</h4><p>Publicamos tu propiedad en los principales portales.</p></div><div class="how-i"><span class="how-n">03</span><h4>Web y redes sociales</h4><p>Promocionamos cada inmueble en nuestra web y nuestras redes.</p></div><div class="how-i"><span class="how-n">04</span><h4>Red de colegas</h4><p>Trabajamos con una amplia red de colegas para multiplicar las oportunidades de venta o alquiler.</p></div><div class="how-i"><span class="how-n">05</span><h4>De principio a fin</h4><p>Te acompañamos en todo el proceso con asesoramiento profesional.</p></div></div>
+    <div class="how-scroll" id="howScroll" style="--n:5">
+      <div class="hs-sticky">
+        <div class="hs-left">
+          <div class="kicker">¿Cómo trabajamos?</div>
+          <h3 class="hs-title">Así llevamos tu propiedad a más gente</h3>
+          <ol class="hs-nav"><li data-i="0"><span>01</span>Atención personalizada</li><li data-i="1"><span>02</span>Portales inmobiliarios</li><li data-i="2"><span>03</span>Web y redes sociales</li><li data-i="3"><span>04</span>Red de colegas</li><li data-i="4"><span>05</span>De principio a fin</li></ol>
+          <div class="hs-bar"><i id="hsBar"></i></div>
+          <div class="hs-hint">Seguí scrolleando ↓</div>
+        </div>
+        <div class="hs-right"><div class="hs-panel" data-i="0"><div class="hs-num">01</div><div class="hs-body"><div class="hs-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div><h4>Atención personalizada</h4><p>Combinamos atención personalizada con estrategias de comercialización de alto alcance. Te escuchamos y armamos un plan a medida para tu propiedad.</p></div></div><div class="hs-panel" data-i="1"><div class="hs-num">02</div><div class="hs-body"><div class="hs-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h6M7 12h10"/></svg></div><h4>Portales inmobiliarios</h4><p>Publicamos tu propiedad en los principales portales inmobiliarios, con fotos profesionales y una ficha completa.</p></div></div><div class="hs-panel" data-i="2"><div class="hs-num">03</div><div class="hs-body"><div class="hs-ico"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/><path d="M2 8c1.5-1 1.5-3 0-4M22 8c-1.5-1-1.5-3 0-4"/></svg></div><h4>Web y redes sociales</h4><p>Promocionamos cada inmueble en nuestra web y en nuestras redes, para que llegue a más gente todos los días.</p></div></div><div class="hs-panel" data-i="3"><div class="hs-num">04</div><div class="hs-body"><div class="hs-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 7l4 3M18 7l-4 3M6 17l4-3M18 17l-4-3"/></svg></div><h4>Red de colegas</h4><p>Trabajamos junto a una amplia red de colegas para ampliar las oportunidades de venta o alquiler.</p></div></div><div class="hs-panel" data-i="4"><div class="hs-num">05</div><div class="hs-body"><div class="hs-ico"><svg viewBox="0 0 24 24"><path d="M4 21V4M4 4h11l-2 4 2 4H4"/><path d="M15 21l3-3 3 3"/></svg></div><h4>De principio a fin</h4><p>Te acompañamos en todo el proceso con asesoramiento profesional, desde la tasación hasta la firma.</p></div></div></div>
+      </div>
+    </div>
 
     <div class="duo">
       <div class="duo-card inv">
@@ -1093,7 +1159,7 @@ render();
     ['.sub-head', 'rv'], ['.gallery', 'rv rv-z'], ['.listing > *', 'rv'], ['.cta > div', 'rv rv-l'],
     ['.cta > form', 'rv rv-r'], ['.closing .wrap > *', 'rv'],
   ];
-  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.how > .how-i', '.duo > .duo-card',
+  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.duo > .duo-card',
     '.quotes > .q', '.factors > div', '.steps > .step', '.feat > div', '.fgrid > div', '.stats .wrap > div'];
   const els = [];
   groups.forEach(([sel, cls]) => $$(sel).forEach((el) => { el.classList.add(...cls.split(' ')); els.push(el); }));
@@ -1135,6 +1201,38 @@ render();
     { duration: 600, delay: i * 70, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
   new MutationObserver(animate).observe(grid, { childList: true });
   animate();
+})();
+
+// --- "¿Cómo trabajamos?": la sección queda fija y los pasos avanzan con el scroll
+(function howScroll() {
+  const wrap = document.getElementById('howScroll');
+  if (!wrap) return;
+  const panels = $$('.hs-panel', wrap), items = $$('.hs-nav li', wrap), bar = document.getElementById('hsBar');
+  const n = panels.length;
+  let cur = -1;
+  function setStep(i) {
+    if (i === cur) return;
+    cur = i;
+    panels.forEach((p, k) => { p.classList.toggle('on', k === i); p.classList.toggle('prev', k < i); });
+    items.forEach((li, k) => { li.classList.toggle('on', k === i); li.classList.toggle('done', k < i); });
+  }
+  function update() {
+    const r = wrap.getBoundingClientRect();
+    const total = wrap.offsetHeight - innerHeight * 0.6;
+    const p = Math.min(1, Math.max(0, (96 - r.top) / total));
+    bar.style.width = (p * 100).toFixed(1) + '%';
+    setStep(Math.min(n - 1, Math.floor(p * n)));
+    wrap.classList.toggle('end', p >= 0.98);
+  }
+  // tocar un paso lleva a esa parte del recorrido
+  items.forEach((li, k) => li.addEventListener('click', () => {
+    const top = wrap.getBoundingClientRect().top + scrollY - 96;
+    const total = wrap.offsetHeight - innerHeight * 0.6;
+    scrollTo({ top: top + total * (k + 0.5) / n, behavior: 'smooth' });
+  }));
+  addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  addEventListener('resize', update);
+  update();
 })();
 
 </script>

@@ -247,7 +247,7 @@ render();
     ['.sub-head', 'rv'], ['.gallery', 'rv rv-z'], ['.listing > *', 'rv'], ['.cta > div', 'rv rv-l'],
     ['.cta > form', 'rv rv-r'], ['.closing .wrap > *', 'rv'],
   ];
-  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.how > .how-i', '.duo > .duo-card',
+  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.duo > .duo-card',
     '.quotes > .q', '.factors > div', '.steps > .step', '.feat > div', '.fgrid > div', '.stats .wrap > div'];
   const els = [];
   groups.forEach(([sel, cls]) => $$(sel).forEach((el) => { el.classList.add(...cls.split(' ')); els.push(el); }));
@@ -289,4 +289,36 @@ render();
     { duration: 600, delay: i * 70, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
   new MutationObserver(animate).observe(grid, { childList: true });
   animate();
+})();
+
+// --- "¿Cómo trabajamos?": la sección queda fija y los pasos avanzan con el scroll
+(function howScroll() {
+  const wrap = document.getElementById('howScroll');
+  if (!wrap) return;
+  const panels = $$('.hs-panel', wrap), items = $$('.hs-nav li', wrap), bar = document.getElementById('hsBar');
+  const n = panels.length;
+  let cur = -1;
+  function setStep(i) {
+    if (i === cur) return;
+    cur = i;
+    panels.forEach((p, k) => { p.classList.toggle('on', k === i); p.classList.toggle('prev', k < i); });
+    items.forEach((li, k) => { li.classList.toggle('on', k === i); li.classList.toggle('done', k < i); });
+  }
+  function update() {
+    const r = wrap.getBoundingClientRect();
+    const total = wrap.offsetHeight - innerHeight * 0.6;
+    const p = Math.min(1, Math.max(0, (96 - r.top) / total));
+    bar.style.width = (p * 100).toFixed(1) + '%';
+    setStep(Math.min(n - 1, Math.floor(p * n)));
+    wrap.classList.toggle('end', p >= 0.98);
+  }
+  // tocar un paso lleva a esa parte del recorrido
+  items.forEach((li, k) => li.addEventListener('click', () => {
+    const top = wrap.getBoundingClientRect().top + scrollY - 96;
+    const total = wrap.offsetHeight - innerHeight * 0.6;
+    scrollTo({ top: top + total * (k + 0.5) / n, behavior: 'smooth' });
+  }));
+  addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  addEventListener('resize', update);
+  update();
 })();
