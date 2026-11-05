@@ -399,6 +399,119 @@
     .h2-caption-m{display:block}
     .hero2 + .search{margin-top:16px}
   }
+  /* ===================== MÁS CARÁCTER ===================== */
+  :root{--display:"Archivo Black","Arial Black",sans-serif}
+  .sec-head h2,.about h2,.cta h2,.sub-head h3,.duo-card h3{font-family:var(--display)!important;font-weight:400;letter-spacing:-.02em;line-height:1.05}
+  .sec-head h2{font-size:46px}
+  .about h2{font-size:42px!important}
+  .cta h2{font-size:44px}
+  .sub-head h3{font-size:30px}
+  .duo-card h3{font-size:32px}
+  .kicker{display:inline-flex;align-items:center;gap:10px}
+  .kicker:before{content:"";width:0;height:3px;background:var(--red);border-radius:2px;transition:width .8s cubic-bezier(.2,.7,.2,1) .2s}
+  .kicker.in:before{width:28px}
+
+  /* revelado al scrollear */
+  .rv{opacity:0;transform:translateY(38px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .rv.in{opacity:1;transform:none}
+  .rv-l{transform:translateX(-50px)}.rv-r{transform:translateX(50px)}
+  .rv-z{transform:scale(.92)}
+  .rv-l.in,.rv-r.in,.rv-z.in{transform:none}
+
+  /* marquesina */
+  .marquee,.cl-mq{overflow:hidden;white-space:nowrap}
+  .marquee{background:var(--navy);color:#fff;padding:22px 0;margin-top:70px;transform:rotate(-1.6deg) scale(1.03);box-shadow:0 18px 40px rgba(8,40,73,.18)}
+  .mq-track{display:inline-flex;animation:mq 38s linear infinite}
+  .mq-row{display:inline-flex;align-items:center;gap:34px;padding-right:34px}
+  .marquee span{font-family:var(--display);font-size:38px;text-transform:uppercase;letter-spacing:-.01em}
+  .marquee span:nth-of-type(even){color:transparent;-webkit-text-stroke:1.5px #fff}
+  .marquee i{font-style:normal;color:var(--red);font-size:26px}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* servicios */
+  .services{counter-reset:svc}
+  .svc{position:relative;overflow:hidden;counter-increment:svc;transition:background .35s,color .35s,transform .35s,box-shadow .35s;border-radius:18px}
+  .svc:after{content:"0" counter(svc);position:absolute;right:18px;top:12px;font-family:var(--display);font-size:54px;color:#eef3fa;transition:color .35s;z-index:0}
+  .svc>*{position:relative;z-index:1}
+  .svc:hover{background:var(--navy);transform:translateY(-8px);box-shadow:0 24px 50px rgba(8,40,73,.25)}
+  .svc:hover:after{color:rgba(255,255,255,.08)}
+  .svc:hover h3,.svc:hover p{color:#fff}
+  .svc .ico{transition:background .35s,transform .5s}
+  .svc:hover .ico{background:var(--red);transform:rotate(-8deg) scale(1.08)}
+  .svc:hover .ico svg{fill:#fff;stroke:#fff}
+  .svc:hover .ico svg rect{fill:var(--red)}
+  .svc:hover a{color:#ffb3b7}
+
+  /* botones */
+  .btn{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-red:hover{box-shadow:0 12px 26px rgba(225,37,47,.38)}
+  .btn-red:after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+  .btn-red:hover:after{animation:shine .7s ease}
+  @keyframes shine{to{left:130%}}
+
+  /* tarjetas */
+  .card{overflow:hidden;border-radius:18px}
+  .card .ph{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .ph{transform:scale(1.07)}
+  .card .body{position:relative;background:#fff;z-index:1}
+  .card .body:before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--red);transition:width .5s}
+  .card:hover .body:before{width:100%}
+  .card:hover{transform:translateY(-6px) rotate(-.4deg)}
+
+  /* galerías y sucursales */
+  .gallery>div{transition:transform .5s,filter .5s}
+  .gallery>div:hover{transform:scale(1.02);filter:saturate(1.15)}
+  .zone{transition:transform .5s,box-shadow .5s}
+  .zone:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(8,40,73,.3)}
+  .zone .script{font-family:var(--display);font-size:60px;letter-spacing:-.02em;text-transform:uppercase}
+
+  /* cifras */
+  .stats{position:relative;overflow:hidden;background:var(--red)}
+  .stats:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.06) 0 2px,transparent 2px 18px)}
+  .stats .wrap{position:relative}
+  .stats b{font-family:var(--display);font-size:68px;line-height:1;font-weight:400}
+  .stats b i{color:#fff;opacity:.6}
+  .stats .wrap>div>span{color:#ffe1e3}
+
+  /* cómo trabajamos */
+  .how-i{transition:transform .4s,border-color .4s}
+  .how-i:hover{transform:translateY(-6px);border-color:var(--red)}
+  .how-n{font-family:var(--display);font-size:40px;letter-spacing:-.02em;color:#dfe6f0;transition:color .4s}
+  .how-i:hover .how-n{color:var(--red)}
+
+  /* cierre */
+  .closing{position:relative;overflow:hidden}
+  .cl-mq{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);pointer-events:none;opacity:.08}
+  .cl-mq .mq-track{animation-duration:30s}
+  .cl-mq span{font-family:var(--display);font-size:200px;text-transform:uppercase;color:transparent;-webkit-text-stroke:2px #fff;padding-right:80px}
+  .closing .wrap{position:relative;z-index:1}
+  .cl-2{font-family:var(--display)!important;font-style:normal!important;letter-spacing:-.02em;font-size:60px}
+
+  html,body{overflow-x:clip}
+  .stats b span{font-size:inherit;color:#fff;display:inline}
+  .stats b i{font-size:.6em;vertical-align:.45em;margin-left:2px}
+  .filters{flex-shrink:0}
+  .chip{white-space:nowrap}
+  .wa svg{transition:transform .4s}
+  .wa:hover svg{transform:rotate(-12deg)}
+
+  @media (max-width:600px){
+    .sec-head h2,.cta h2{font-size:30px!important}
+    .about h2{font-size:30px!important}
+    .duo-card h3{font-size:26px}
+    .marquee{margin-top:40px;padding:14px 0}
+    .marquee span{font-size:24px}
+    .stats b{font-size:48px}
+    .cl-2{font-size:36px}
+    .cl-mq span{font-size:110px}
+    .zone .script{font-size:42px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1!important;transform:none!important;transition:none}
+    .mq-track{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -468,6 +581,9 @@
     </div>
   </form>
 </div>
+
+<!-- MARQUESINA -->
+<div class="marquee" aria-hidden="true"><div class="mq-track"><div class="mq-row"><span>Venta</span><i>✦</i><span>Alquiler</span><i>✦</i><span>Inversiones</span><i>✦</i><span>Tasaciones</span><i>✦</i><span>Tapiales</span><i>✦</i><span>Canning</span><i>✦</i><span>Emprendimientos</span><i>✦</i><span>Administración</span><i>✦</i></div><div class="mq-row"><span>Venta</span><i>✦</i><span>Alquiler</span><i>✦</i><span>Inversiones</span><i>✦</i><span>Tasaciones</span><i>✦</i><span>Tapiales</span><i>✦</i><span>Canning</span><i>✦</i><span>Emprendimientos</span><i>✦</i><span>Administración</span><i>✦</i></div></div></div>
 
 <!-- SERVICIOS -->
 <section>
@@ -597,10 +713,10 @@
 
 <div class="stats">
   <div class="wrap">
-    <div><b>16</b><span>años de trayectoria</span></div>
-    <div><b>2</b><span>sucursales, un solo equipo</span></div>
-    <div><b>1.500<i>+</i></b><span>operaciones concretadas</span></div>
-    <div><b>0<i>$</i></b><span>tasación sin compromiso</span></div>
+    <div><b><span data-count="16">16</span></b><span>años de trayectoria</span></div>
+    <div><b><span data-count="2">2</span></b><span>sucursales, un solo equipo</span></div>
+    <div><b><span data-count="1500">1.500</span><i>+</i></b><span>operaciones concretadas</span></div>
+    <div><b><span data-count="320">320</span><i>+</i></b><span>propiedades activas</span></div>
   </div>
 </div>
 
@@ -697,6 +813,7 @@
 
 <!-- CIERRE -->
 <section class="closing">
+  <div class="cl-mq" aria-hidden="true"><div class="mq-track"><div class="mq-row"><span>Iglesias Propiedades</span><span>Iglesias Propiedades</span></div><div class="mq-row"><span>Iglesias Propiedades</span><span>Iglesias Propiedades</span></div></div></div>
   <div class="wrap">
     <p class="serif cl-1">Tu tranquilidad es nuestra prioridad. Por eso te acompañamos en cada paso del camino para que encuentres mucho más que una propiedad.</p>
     <div class="cl-line"></div>
@@ -718,7 +835,7 @@
       <div><h5>Sucursal Canning</h5><ul><li>Canning (dirección a completar)</li><li><a href="tel:+541144944370">11 4494-4370</a> · <a target="_blank" rel="noopener" href="https://wa.me/5491159545500">WhatsApp 11 5954-5500</a></li><li><a href="mailto:canning@iglesiasprop.com">canning@iglesiasprop.com</a></li><li>Lu a Vie 10 a 17 h · Sáb 10 a 13 h</li><li>Mat. N° 0000 (completar)</li></ul></div>
       <div><h5>Navegación</h5><ul><li><a href="#propiedades" data-op="venta">Comprar</a></li><li><a href="#propiedades" data-op="alquiler">Alquilar</a></li><li><a href="#propiedades" data-op="inversion">Inversiones</a></li><li><a href="#tasaciones">Tasaciones</a></li><li><a href="#nosotros">Nosotros</a></li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 Iglesias Negocios Inmobiliarios · Prototipo</span><span>Precios, reseñas, matrículas y la cifra de operaciones son de ejemplo</span></div>
+    <div class="legal"><span>© 2026 Iglesias Negocios Inmobiliarios · Prototipo</span><span>Precios, reseñas, matrículas y cifras de operaciones y propiedades son de ejemplo</span></div>
   </div>
 </footer>
 
@@ -966,6 +1083,58 @@ render();
       ticking = false;
     });
   }, { passive: true });
+})();
+
+// --- animaciones al scrollear: revelado escalonado y contadores
+(function scrollFx() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const groups = [
+    ['.sec-head', 'rv'], ['.about > div:first-child', 'rv rv-l'], ['.about > div:last-child', 'rv rv-r'],
+    ['.sub-head', 'rv'], ['.gallery', 'rv rv-z'], ['.listing > *', 'rv'], ['.cta > div', 'rv rv-l'],
+    ['.cta > form', 'rv rv-r'], ['.closing .wrap > *', 'rv'],
+  ];
+  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.how > .how-i', '.duo > .duo-card',
+    '.quotes > .q', '.factors > div', '.steps > .step', '.feat > div', '.fgrid > div', '.stats .wrap > div'];
+  const els = [];
+  groups.forEach(([sel, cls]) => $$(sel).forEach((el) => { el.classList.add(...cls.split(' ')); els.push(el); }));
+  stagger.forEach((sel) => $$(sel).forEach((el, i) => {
+    el.classList.add('rv'); el.style.setProperty('--d', (i % 6) * 0.09 + 's'); els.push(el);
+  }));
+  $$('.kicker').forEach((k) => els.push(k));
+  const counters = $$('[data-count]');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach((e) => io.observe(e));
+
+  const cio = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    countUp(en.target); cio.unobserve(en.target);
+  }), { threshold: 0.6 });
+  counters.forEach((c) => { c.textContent = '0'; cio.observe(c); });
+
+  function countUp(el) {
+    const end = +el.dataset.count, t0 = performance.now(), dur = 1600;
+    (function tick(t) {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(end * e).toLocaleString('es-AR');
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+})();
+
+// --- las tarjetas se vuelven a dibujar con cada filtro: animarlas al aparecer
+(function cardsFx() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const grid = document.getElementById('grid');
+  const animate = () => [...grid.children].forEach((c, i) => c.animate(
+    [{ opacity: 0, transform: 'translateY(30px) scale(.97)' }, { opacity: 1, transform: 'none' }],
+    { duration: 600, delay: i * 70, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
+  new MutationObserver(animate).observe(grid, { childList: true });
+  animate();
 })();
 
 </script>

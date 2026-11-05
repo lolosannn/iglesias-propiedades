@@ -238,3 +238,55 @@ render();
     });
   }, { passive: true });
 })();
+
+// --- animaciones al scrollear: revelado escalonado y contadores
+(function scrollFx() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const groups = [
+    ['.sec-head', 'rv'], ['.about > div:first-child', 'rv rv-l'], ['.about > div:last-child', 'rv rv-r'],
+    ['.sub-head', 'rv'], ['.gallery', 'rv rv-z'], ['.listing > *', 'rv'], ['.cta > div', 'rv rv-l'],
+    ['.cta > form', 'rv rv-r'], ['.closing .wrap > *', 'rv'],
+  ];
+  const stagger = ['.services > .svc', '.zones > .zone', '.srv-grid > .srv', '.how > .how-i', '.duo > .duo-card',
+    '.quotes > .q', '.factors > div', '.steps > .step', '.feat > div', '.fgrid > div', '.stats .wrap > div'];
+  const els = [];
+  groups.forEach(([sel, cls]) => $$(sel).forEach((el) => { el.classList.add(...cls.split(' ')); els.push(el); }));
+  stagger.forEach((sel) => $$(sel).forEach((el, i) => {
+    el.classList.add('rv'); el.style.setProperty('--d', (i % 6) * 0.09 + 's'); els.push(el);
+  }));
+  $$('.kicker').forEach((k) => els.push(k));
+  const counters = $$('[data-count]');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    io.unobserve(en.target);
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach((e) => io.observe(e));
+
+  const cio = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    countUp(en.target); cio.unobserve(en.target);
+  }), { threshold: 0.6 });
+  counters.forEach((c) => { c.textContent = '0'; cio.observe(c); });
+
+  function countUp(el) {
+    const end = +el.dataset.count, t0 = performance.now(), dur = 1600;
+    (function tick(t) {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(end * e).toLocaleString('es-AR');
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+})();
+
+// --- las tarjetas se vuelven a dibujar con cada filtro: animarlas al aparecer
+(function cardsFx() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const grid = document.getElementById('grid');
+  const animate = () => [...grid.children].forEach((c, i) => c.animate(
+    [{ opacity: 0, transform: 'translateY(30px) scale(.97)' }, { opacity: 1, transform: 'none' }],
+    { duration: 600, delay: i * 70, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
+  new MutationObserver(animate).observe(grid, { childList: true });
+  animate();
+})();
