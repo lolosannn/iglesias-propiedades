@@ -6,9 +6,10 @@ html = open('index.html', encoding='utf-8').read()
 js = open('js/app.js', encoding='utf-8').read()
 
 def data_uri(path):
-    return 'data:image/jpeg;base64,' + base64.b64encode(open(path, 'rb').read()).decode()
+    mime = 'image/png' if path.endswith('.png') else 'image/jpeg'
+    return f'data:{mime};base64,' + base64.b64encode(open(path, 'rb').read()).decode()
 
-imgs = sorted(set(re.findall(r'img/[\w\-]+\.jpg', html + js)))
+imgs = sorted(set(re.findall(r'img/[\w\-]+\.(?:jpg|png)', html + js)))
 for path in imgs:
     if os.path.exists(path):
         uri = data_uri(path)

@@ -107,6 +107,7 @@ function goToList() {
 $('#opTabs').addEventListener('click', (e) => {
   const b = e.target.closest('.tab'); if (!b) return;
   state.op = b.dataset.op; render();
+
 });
 $$('#zonePills, #zoneChips').forEach((g) => g.addEventListener('click', (e) => {
   const b = e.target.closest('[data-zona]'); if (!b) return;
@@ -212,3 +213,28 @@ $('#burger').addEventListener('click', () => $('#nav').classList.toggle('open'))
 $$('#nav a').forEach((a) => a.addEventListener('click', closeNav));
 
 render();
+
+// --- hero animado: arranca cuando las dos imágenes están cargadas
+(function heroAnim() {
+  const stage = document.getElementById('heroStage');
+  if (!stage) return;
+  const imgs = [...stage.querySelectorAll('img')];
+  const ready = imgs.map((im) => im.complete ? Promise.resolve() : new Promise((r) => { im.onload = im.onerror = r; }));
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  Promise.all([...ready, fonts]).then(() => {
+    stage.classList.add('play');
+    stage.querySelector('.h2-frame img').addEventListener('animationend', () => stage.classList.add('done'), { once: true });
+  });
+  // parallax suave: las letras se quedan un poco atrás al scrollear
+  const type = stage.querySelector('.h2-type');
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = Math.min(scrollY, 600);
+      type.style.translate = `0 ${y * 0.25}px`;
+      ticking = false;
+    });
+  }, { passive: true });
+})();

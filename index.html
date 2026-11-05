@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Iglesias Negocios Inmobiliarios — Boceto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#0d3a6b;
@@ -354,6 +356,49 @@
   .wa-tip{position:absolute;right:72px;white-space:nowrap;background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.15);opacity:0;transform:translateX(6px);transition:.2s;pointer-events:none}
   .wa:hover .wa-tip{opacity:1;transform:none}
   @media (max-width:600px){.wa-tip{display:none}}
+  /* ===== HERO ANIMADO ===== */
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .hero2{background:radial-gradient(120% 80% at 50% 0%,#ffffff 0%,#eef2f8 70%);padding:56px 0 0;overflow:hidden}
+  .h2-wrap{width:min(1180px,92vw,calc((100svh - 150px) * 1.79));margin:0 auto;container-type:inline-size}
+  .h2-stage{position:relative;aspect-ratio:1376/768;--cut:39%;--r:26px}
+  .h2-type{position:absolute;left:0;right:0;top:4.2cqw;text-align:center;line-height:.8;z-index:1;
+    will-change:transform}
+  .h2-kicker{display:block;font-family:"Archivo Black",Arial Black,sans-serif;color:var(--red);font-size:2.3cqw;letter-spacing:.75em;margin-right:-.75em;text-transform:uppercase;margin-bottom:1.6cqw}
+  .h2-word{display:block;font-family:"Archivo Black",Arial Black,sans-serif;color:var(--navy);font-size:17.6cqw;letter-spacing:-.035em;white-space:nowrap}
+  .h2-frame{position:absolute;inset:0;z-index:2;filter:drop-shadow(0 30px 40px rgba(8,40,73,.22))}
+  .h2-frame img,.h2-roof{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .h2-frame img{border-radius:var(--r);clip-path:inset(0 0 0 0 round var(--r))}
+  .h2-roof{z-index:3;pointer-events:none;opacity:0}
+  .h2-caption{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:0 3.5cqw 7.5cqw;color:#fff;
+    background:linear-gradient(0deg,rgba(8,40,73,.82),rgba(8,40,73,0));border-radius:0 0 var(--r) var(--r);opacity:0;transform:translateY(14px)}
+  .h2-caption h1{font-size:clamp(22px,3.3cqw,44px);line-height:1.12;max-width:62%;margin-top:10px}
+  .h2-caption h1 em{color:#ffd5d7}
+  .hero2 + .search{margin-top:-46px}
+  .h2-caption-m{display:none;color:var(--navy);font-size:24px;line-height:1.2;margin:22px 4px 0;opacity:0;animation:h2Cap .8s ease 2s both}
+  .h2-caption-m em{color:var(--red)}
+
+  /* estados de la animación */
+  .h2-stage.play .h2-roof{opacity:1}
+  .h2-stage.play .h2-frame img{animation:h2Clip 1.5s cubic-bezier(.7,0,.2,1) .7s both}
+  .h2-stage.play .h2-type{animation:h2Type 1.5s cubic-bezier(.2,.7,.2,1) .9s both}
+  .h2-stage.play .h2-caption{animation:h2Cap .8s ease 1.9s both}
+  .h2-stage.play{animation:h2In .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes h2In{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes h2Clip{from{clip-path:inset(0 0 0 0 round var(--r))}to{clip-path:inset(var(--cut) 0 0 0 round var(--r))}}
+  @keyframes h2Type{from{transform:translateY(5cqw);opacity:.0}to{transform:none;opacity:1}}
+  @keyframes h2Cap{to{opacity:1;transform:none}}
+  .h2-stage.done .h2-frame img{clip-path:inset(var(--cut) 0 0 0 round var(--r))}
+  @media (prefers-reduced-motion:reduce){
+    .h2-stage.play,.h2-stage.play *{animation-duration:1ms!important;animation-delay:0s!important}
+  }
+  @media (max-width:600px){
+    .hero2{padding-top:28px}
+    .h2-wrap{width:94vw}
+    .h2-stage{--r:18px}
+    .h2-caption{opacity:0!important;pointer-events:none}
+    .h2-caption-m{display:block}
+    .hero2 + .search{margin-top:16px}
+  }
 </style>
 </head>
 <body>
@@ -392,11 +437,21 @@
   </div>
 </header>
 
-<section class="hero" style="padding:0">
-  <div class="wrap">
-    <div class="eyebrow">Tapiales · Canning</div>
-    <h1 class="serif">Tu próximo hogar, <em>en manos de quienes conocen la zona.</em></h1>
-    <p class="lead">Venta, alquiler e inversiones en zona oeste y zona sur. Una sola inmobiliaria, dos sucursales, todo el equipo trabajando para vos.</p>
+<section class="hero2" id="inicio">
+  <div class="h2-wrap">
+    <div class="h2-stage" id="heroStage">
+      <div class="h2-type" aria-hidden="true">
+        <span class="h2-kicker">Propiedades</span>
+        <span class="h2-word">IGLESIAS</span>
+      </div>
+      <div class="h2-frame"><img src="img/hero-casa.jpg" alt="Casa con fachada blanca, puerta roja y techo a dos aguas" fetchpriority="high"></div>
+      <img class="h2-roof" src="img/hero-casa-techo.png" alt="" aria-hidden="true">
+      <div class="h2-caption">
+        <span class="eyebrow">Tapiales · Canning</span>
+        <h1 class="serif">Tu próximo hogar, <em>en manos de quienes conocen la zona.</em></h1>
+      </div>
+    </div>
+    <p class="h2-caption-m serif">Tu próximo hogar, <em>en manos de quienes conocen la zona.</em></p>
   </div>
 </section>
 
